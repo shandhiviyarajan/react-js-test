@@ -11,3 +11,16 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     display: block;
 }
+
+/* product card*/
+.product-card{
+    position: relative;
+
+}
+
+.product-card .badge{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    margin: 0px;
+}

@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import CartDropdown from 'components/organisms/CartDropdown';
 import ProductCard from 'components/organisms/ProductCard';
 import DefaultLayout from 'components/templates/Default';
-import { Spinner } from 'react-bootstrap';
+import PageTitle from 'components/organisms/PageTitle';
+import FilterBy from 'components/organisms/FilterBy';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   actionAddToStock,
@@ -11,9 +12,7 @@ import {
   actionRestoreStock
 } from 'core/redux/actions/robotsAction';
 import { actionAddToCart, actionIncrease, actionReduce } from 'core/redux/actions/cartActions';
-import { Col, Container, Row } from 'react-bootstrap';
-import PageTitle from '../../organisms/PageTitle';
-import FilterBy from '../../organisms/FilterBy';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const Home = () => {
   const cart = useSelector(state => state.shopping.cart.data);
   const handleAddToCart = (robot) => {
     //add to cart only of stock available
-    if (robot.stock > 0 && cart.length < 5) {
+    if (robot.stock > 0) {
       //update stock
       dispatch(actionReduceStock(robot));
       //check the stock and item and add to cart
@@ -52,7 +51,14 @@ const Home = () => {
         ));
         dispatch(actionAddToCart(cartItems));
       } else {
-        dispatch(actionAddToCart([...cart, item]));
+
+        if(cart.length === 5){
+            //show notifications
+            alert('You can\'t add more than 5 different robots to cart !');
+        }else{
+          dispatch(actionAddToCart([...cart, item]));
+        }
+
       }
     }
   };
@@ -95,6 +101,7 @@ const Home = () => {
   };
   return (
     <DefaultLayout>
+
       <Container fluid>
         <Row>
           <Col md={9}>
@@ -110,11 +117,12 @@ const Home = () => {
               </Col>
             </Row>
             <Row className="justify-content-center">
-              {isLoading ? <Spinner animation="border" variant="primary" /> :
+              {isLoading ? <Spinner animation="border" variant="primary"/> :
                 data && data.map((robot, index) => (
-                  <Col md={3}>
-                    <ProductCard className="mb-4" addToCart={() => handleAddToCart(robot)} robot={robot}
-                                 key={index + 'robot'}/>
+                  <Col md={3} key={index + 'robot'}>
+                    <ProductCard className="product-card mb-4"
+                                 addToCart={() => handleAddToCart(robot)} robot={robot}
+                                 />
                   </Col>
                 ))
               }

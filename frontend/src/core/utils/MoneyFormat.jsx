@@ -6,7 +6,7 @@ import { CURRENCY_PREFIX } from '../constants';
 const MoneyFormat = (props) => {
   return (
 
-      <CurrencyFormat value={props.value}
+      <CurrencyFormat value={parseFloat(props.value).toFixed(2)}
                       displayType={props.displayType}
                       thousandSeparator={props.thousandSeparator}
                       prefix={props.prefix}/>
