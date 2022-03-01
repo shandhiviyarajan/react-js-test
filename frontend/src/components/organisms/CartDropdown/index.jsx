@@ -24,6 +24,9 @@ const CartItem = ({ item, removeItem, reduceItem, increaseItem }) => {
       <td>
         <Text>{item.qty}</Text>
       </td>
+      <td>
+          <MoneyFormat value={parseFloat(item.qty * item.price)}/>
+      </td>
 
       <td>
         <Button size='sm' onClick={() => reduceItem(item)}>-</Button>
@@ -68,7 +71,7 @@ const CartDropdown = ({ cart, removeItem, reduceItem, increaseItem, total, qty,c
               }
               <tr>
 
-                <td colSpan="6">
+                <td colSpan="7">
                   <Box className="d-flex justify-content-between">
                     <Text className="text-end mb-0">
                       Cart Total
@@ -80,7 +83,7 @@ const CartDropdown = ({ cart, removeItem, reduceItem, increaseItem, total, qty,c
                 </td>
               </tr>
               <tr>
-                <td colSpan="6">
+                <td colSpan="7">
                   {
                     cart.length > 0 ?
                       <Button variant="success" size="md" className="btn-block" onClick={checkOut}> Check out</Button>
