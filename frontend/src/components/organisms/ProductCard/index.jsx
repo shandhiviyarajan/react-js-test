@@ -1,17 +1,16 @@
 import React from 'react';
 import MoneyFormat from 'core/utils/MoneyFormat';
-import Text from 'components/atoms/Text';
 import { Badge, Button, Card } from 'react-bootstrap';
 import { formatDate } from 'core/utils/formatDate';
 //stock calculator
 const Stock = ({ value }) => {
   return (
     <>
-      <Badge bg={value === 0 ? 'danger':'success'}>
-      {value === 0 ? <span className="text-center">Not Available</span> : <span
-        className="text-center"><i className="fa fa-check-circle" aria-hidden="true"></i> In Stock {value}</span>}
+      <Badge bg={value === 0 ? 'danger' : 'success'}>
+        {value === 0 ? <span className="text-center">Not Available</span> : <span
+          className="text-center"><i className="fa fa-check-circle" aria-hidden="true"></i> In Stock {value}</span>}
       </Badge>
-        </>
+    </>
   );
 };
 //created date
@@ -33,10 +32,9 @@ const ProductCard = (props) => {
           {props.robot.material}
         </Card.Text>
         <Card.Text className="text-center fw-light">
-       Created date -    <CreatedDate  date={props.robot.createdAt}/>
+          Created date - <CreatedDate date={props.robot.createdAt}/>
         </Card.Text>
-
-          <Stock value={props.robot.stock}/>
+        <Stock value={props.robot.stock}/>
         <h4 className="text-center mb-2">
           <MoneyFormat value={parseFloat(props.robot.price)}/>
         </h4>

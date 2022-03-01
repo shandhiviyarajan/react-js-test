@@ -68,6 +68,8 @@ const Home = () => {
     //increase only if stock is available
     if (data.find(item => item.name === robot.name).stock > 0) {
       dispatch(actionIncrease(robot));
+    }else{
+      alert("No enough stock of selected robot");
     }
   };
   //handle reduce items in cart
@@ -101,7 +103,6 @@ const Home = () => {
   };
   return (
     <DefaultLayout>
-
       <Container fluid>
         <Row>
           <Col md={9}>
@@ -110,7 +111,6 @@ const Home = () => {
                 <PageTitle/>
               </Col>
             </Row>
-
             <Row className="justify-content-center mb-4">
               <Col md={6}>
                 <FilterBy/>
@@ -136,8 +136,6 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-
-
     </DefaultLayout>
   );
 };
