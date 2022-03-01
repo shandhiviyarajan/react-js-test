@@ -119,8 +119,8 @@ const Home = () => {
             <Row className="justify-content-center">
               {isLoading ? <Spinner animation="border" variant="primary"/> :
                 data && data.map((robot, index) => (
-                  <Col md={3} key={index + 'robot'}>
-                    <ProductCard className="product-card mb-4"
+                  <Col md={3} key={index + 'robot'} className="product-card">
+                    <ProductCard className="mb-4"
                                  addToCart={() => handleAddToCart(robot)} robot={robot}
                                  />
                   </Col>
