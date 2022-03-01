@@ -1,8 +1,8 @@
 import React from 'react';
 import Text from 'components/atoms/Text';
-import { Alert, Button, Image } from 'react-bootstrap';
+import { Alert, Badge, Button, Image } from 'react-bootstrap';
 import MoneyFormat from 'core/utils/MoneyFormat';
-import Box from '../../atoms/Box';
+import Box from 'components/atoms/Box';
 
 /**
  * Cart items
@@ -42,12 +42,15 @@ const CartItem = ({ item, removeItem, reduceItem, increaseItem }) => {
 /**
  * Cart dropdown
  */
-const CartDropdown = ({ cart, removeItem, reduceItem, increaseItem, total, checkOut }) => {
+const CartDropdown = ({ cart, removeItem, reduceItem, increaseItem, total, qty,checkOut }) => {
   return (
     <>
       <Box className="p-4">
         <h4 className="my-4 d-flex justify-content-between">
-          <i className="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+         <Text className="cart-qty">
+           <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+           <Badge pill  bg="secondary">{qty} </Badge>
+         </Text> Shopping Cart
         </h4>
         {
           cart.length > 0 ?
