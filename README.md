@@ -62,8 +62,7 @@ libraries/frameworks, packages, tools that you want.
 ### What should I do when I'm finished?
 
 After you have finished you work push all commits to your repository, and then send us email to inform that app has been finished, also please add following users there:
-* win@morphos.is
-* suhas@morphos.is
+* shan@hatchyard.io
 
 ### How is the exam graded?
 
